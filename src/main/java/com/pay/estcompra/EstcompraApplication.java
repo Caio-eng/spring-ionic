@@ -13,6 +13,7 @@ import com.pay.estcompra.domain.Cidade;
 import com.pay.estcompra.domain.Cliente;
 import com.pay.estcompra.domain.Endereco;
 import com.pay.estcompra.domain.Estado;
+import com.pay.estcompra.domain.ItemPedido;
 import com.pay.estcompra.domain.Pagamento;
 import com.pay.estcompra.domain.PagamentoComBoleto;
 import com.pay.estcompra.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.pay.estcompra.repositories.CidadeRepository;
 import com.pay.estcompra.repositories.ClienteRepository;
 import com.pay.estcompra.repositories.EnderecoRepository;
 import com.pay.estcompra.repositories.EstadoRepository;
+import com.pay.estcompra.repositories.ItemPedidoRepository;
 import com.pay.estcompra.repositories.PagamentoRepository;
 import com.pay.estcompra.repositories.PedidoRepository;
 import com.pay.estcompra.repositories.ProdutoRepository;
@@ -48,6 +50,8 @@ public class EstcompraApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(EstcompraApplication.class, args);
@@ -113,6 +117,19 @@ public class EstcompraApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 
 }
