@@ -20,7 +20,7 @@ public class CategoriaService {
 		return repo.findAll();
 	}
 	
-	public Categoria buscar(Integer id) {
+	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFountException(
 				"Categoria não encontrada! Id: " + id + ", Tipo: " + Categoria.class.getName()));
@@ -29,6 +29,16 @@ public class CategoriaService {
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
+	}
+	
+	public Categoria update(Categoria obj) {
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
 	}
 	
 }
