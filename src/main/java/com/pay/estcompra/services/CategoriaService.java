@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.pay.estcompra.domain.Categoria;
+import com.pay.estcompra.dto.CategoriaDTO;
 import com.pay.estcompra.repositories.CategoriaRepository;
 import com.pay.estcompra.services.exceptions.ObjectNotFountException;
 
@@ -39,6 +40,10 @@ public class CategoriaService {
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 	
 	public Categoria update(Categoria obj) {
