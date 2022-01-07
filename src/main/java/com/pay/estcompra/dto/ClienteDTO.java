@@ -7,7 +7,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.pay.estcompra.domain.Cliente;
+import com.pay.estcompra.services.validation.ClientUpdate;
 
+@ClientUpdate
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
