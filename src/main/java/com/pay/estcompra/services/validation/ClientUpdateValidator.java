@@ -12,11 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.pay.estcompra.domain.Cliente;
-import com.pay.estcompra.domain.enums.TipoCliente;
 import com.pay.estcompra.dto.ClienteDTO;
 import com.pay.estcompra.repositories.ClienteRepository;
 import com.pay.estcompra.resources.exception.FieldMessage;
-import com.pay.estcompra.services.validation.utils.BR;
 
 public class ClientUpdateValidator implements ConstraintValidator<ClientUpdate, ClienteDTO> {
 	
