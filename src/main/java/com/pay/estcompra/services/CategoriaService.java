@@ -19,7 +19,7 @@ import com.pay.estcompra.services.exceptions.ObjectNotFountException;
 public class CategoriaService {
 
 	@Autowired
-	CategoriaRepository repo;
+	private CategoriaRepository repo;
 	
 	public List<Categoria> findAll() {
 		return repo.findAll();

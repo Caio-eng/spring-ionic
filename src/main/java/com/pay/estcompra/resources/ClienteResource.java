@@ -27,7 +27,7 @@ import com.pay.estcompra.services.ClienteService;
 public class ClienteResource {
 	
 	@Autowired
-	ClienteService service;
+	private ClienteService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {

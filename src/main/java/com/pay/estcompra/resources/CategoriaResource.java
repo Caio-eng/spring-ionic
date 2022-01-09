@@ -26,7 +26,7 @@ import com.pay.estcompra.services.CategoriaService;
 public class CategoriaResource {
 	
 	@Autowired
-	CategoriaService service;
+	private CategoriaService service;
 	
 	//Categoria Original
 //	@RequestMapping(method = RequestMethod.GET)

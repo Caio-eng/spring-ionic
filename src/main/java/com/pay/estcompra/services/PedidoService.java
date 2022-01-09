@@ -20,22 +20,25 @@ import com.pay.estcompra.services.exceptions.ObjectNotFountException;
 public class PedidoService {
 
 	@Autowired
-	PedidoRepository repo;
+	private PedidoRepository repo;
 	
 	@Autowired
-	BoletoService boletoService;
+	private BoletoService boletoService;
 	
 	@Autowired
-	PagamentoRepository pagamentoRepository;
+	private PagamentoRepository pagamentoRepository;
 	
 	@Autowired
-	ItemPedidoRepository itemPedidoRepository;
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	@Autowired
-	ProdutoService produtoService;
+	private ProdutoService produtoService;
 	
 	@Autowired
-	ClienteService clienteService;
+	private ClienteService clienteService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
@@ -63,7 +66,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		return obj;
 	}
 }

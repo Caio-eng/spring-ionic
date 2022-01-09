@@ -18,7 +18,7 @@ import com.pay.estcompra.services.validation.utils.BR;
 public class ClientInsertValidator implements ConstraintValidator<ClientInsert, ClienteNewDTO> {
 	
 	@Autowired
-	ClienteRepository repo;
+	private ClienteRepository repo;
 	
 	@Override
 	public void initialize(ClientInsert ann) {

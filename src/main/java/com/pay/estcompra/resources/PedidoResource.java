@@ -21,7 +21,7 @@ import com.pay.estcompra.services.PedidoService;
 public class PedidoResource {
 	
 	@Autowired
-	PedidoService service;
+	private PedidoService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Pedido> find(@PathVariable Integer id) {

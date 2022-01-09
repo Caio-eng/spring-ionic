@@ -21,7 +21,7 @@ import com.pay.estcompra.services.ProdutoService;
 public class ProdutoResource {
 	
 	@Autowired
-	ProdutoService service;
+	private ProdutoService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Produto> find(@PathVariable Integer id) {

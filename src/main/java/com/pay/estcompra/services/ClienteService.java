@@ -26,10 +26,10 @@ import com.pay.estcompra.services.exceptions.ObjectNotFountException;
 public class ClienteService {
 
 	@Autowired
-	ClienteRepository repo;
+	private ClienteRepository repo;
 	
 	@Autowired
-	EnderecoRepository enderecoRepository;
+	private EnderecoRepository enderecoRepository;
 	
 	public List<Cliente> findAll() {
 		return repo.findAll();

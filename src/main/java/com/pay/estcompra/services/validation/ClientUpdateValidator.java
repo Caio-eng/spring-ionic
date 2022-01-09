@@ -22,7 +22,7 @@ public class ClientUpdateValidator implements ConstraintValidator<ClientUpdate, 
 	private HttpServletRequest request;
 	
 	@Autowired
-	ClienteRepository repo;
+	private ClienteRepository repo;
 	
 	@Override
 	public void initialize(ClientUpdate ann) {
